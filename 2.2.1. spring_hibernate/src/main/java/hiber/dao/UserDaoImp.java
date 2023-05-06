@@ -26,4 +26,9 @@ public class UserDaoImp implements UserDao {
       return query.getResultList();
    }
 
+   @Override
+   public SessionFactory getSessionFactory() {
+      return sessionFactory;
+   }
+
 }
