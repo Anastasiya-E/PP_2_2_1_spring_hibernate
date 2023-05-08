@@ -1,15 +1,10 @@
 package hiber.service;
 
-import hiber.dao.UserDao;
+import hiber.dao.*;
 import hiber.model.User;
-import org.hibernate.Session;
-import org.hibernate.Transaction;
-import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
-import javax.persistence.TypedQuery;
 import java.util.List;
 
 @Service
@@ -31,18 +26,8 @@ public class UserServiceImp implements UserService{
    }
 
    @Override
-   public User getDriver(String model, int series) {
-      Transaction transaction = null;
-      Query query = null;
-      try (Session session = userDao.getSessionFactory().openSession()) {
-         String hql = "SELECT u FROM User u WHERE u.car.model=:m AND u.car.series=:s";
-         query = session.createQuery(hql);
-         query.setParameter("m", model);
-         query.setParameter("s", series);
-         return (User) query.setMaxResults(1).uniqueResult();
-      } catch (Exception e) {
-         e.printStackTrace();
-      }
-      return null;
+   @Transactional
+   public User getDriverName(String model, int series) {
+       return userDao.getDriverName(model, series);
    }
 }

@@ -5,7 +5,6 @@ import hiber.model.Car;
 import hiber.model.User;
 import hiber.service.UserService;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
-
 import java.sql.SQLException;
 import java.util.List;
 
@@ -30,7 +29,7 @@ public class MainApp {
          System.out.println("Car = "+" model: "+user.getModelOfCar()+" series: "+user.getSeriesOfCar());
          System.out.println();
       }
-      System.out.println(userService.getDriver("model3", 345).getFirstName());
+      System.out.println(userService.getDriverName("model3", 345).getFirstName());
       context.close();
    }
 }

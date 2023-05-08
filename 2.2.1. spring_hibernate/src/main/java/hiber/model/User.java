@@ -64,10 +64,6 @@ public class User {
       this.email = email;
    }
 
-   public Car getCar() {
-      return car;
-   }
-
    public String getModelOfCar() {
       if (car == null) {
          return "";
